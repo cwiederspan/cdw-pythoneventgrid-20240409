@@ -29,13 +29,12 @@ jobs:
 
     - run: npm i -g azure-functions-core-tools@4 --unsafe-perm true
 
-    # - name: Azure CLI script
-    #   uses: azure/cli@v2
-    #   with:
-    #     azcliversion: 2.59.0
-    #     inlineScript: |
-    #       npm i -g azure-functions-core-tools@4 --unsafe-perm true
-    #       az account show
+    - name: Azure CLI script
+      uses: azure/cli@v2
+      with:
+        azcliversion: 2.59.0
+        inlineScript: |
+          func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }}
 
     # - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
     #   uses: actions/setup-python@v4
