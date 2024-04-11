@@ -4,6 +4,7 @@ on:
   [workflow_dispatch]
 
 env:
+  AZURE_RG_NAME: 'cdw-functesting-20240409'
   AZURE_FUNCTIONAPP_NAME: 'cdw-functesting-20240409-app'   # set this to your function app name on Azure
 
 jobs:
@@ -28,6 +29,12 @@ jobs:
       shell: bash
       run: |
         npm i -g azure-functions-core-tools@4 --unsafe-perm true
+
+    - name: Deploy Resources
+      uses: azure/cli@v2
+      inlineScript: |
+        cd ./infra
+        az deployment group create -g ${{ env.AZURE_RG_NAME }} --template-file main.bicep
 
     - name: Deploy Function
       shell: bash
