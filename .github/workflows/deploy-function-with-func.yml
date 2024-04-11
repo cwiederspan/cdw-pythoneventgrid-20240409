@@ -32,9 +32,10 @@ jobs:
 
     - name: Deploy Resources
       uses: azure/cli@v2
-      inlineScript: |
-        cd ./infra
-        az deployment group create -g ${{ env.AZURE_RG_NAME }} --template-file main.bicep
+      with: 
+        inlineScript: |
+          cd ./infra
+          az deployment group create -g ${{ env.AZURE_RG_NAME }} --template-file main.bicep
 
     - name: Deploy Function
       shell: bash
