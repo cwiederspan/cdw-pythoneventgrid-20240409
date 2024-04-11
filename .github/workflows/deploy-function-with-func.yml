@@ -22,12 +22,15 @@ jobs:
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
-
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-
-    - run: npm i -g azure-functions-core-tools@4 --unsafe-perm true
+         
+    - name: Install Azure Core Tools
+      shell: bash
+      run: |
+          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+          sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+          sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+          sudo apt-get update
+          sudo apt-get install azure-functions-core-tools-4
 
     - name: Azure CLI script
       uses: azure/cli@v2
