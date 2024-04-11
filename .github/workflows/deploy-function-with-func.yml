@@ -42,9 +42,7 @@ jobs:
       shell: bash
       run: |
         cd ./src
-        ls -la
-        pwd
-        # func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }} --python
 
     # - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
     #   uses: actions/setup-python@v4
