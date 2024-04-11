@@ -41,6 +41,7 @@ jobs:
     - name: Deploy Function
       shell: bash
       run: |
+        cd ./src
         func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }}
 
     # - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
