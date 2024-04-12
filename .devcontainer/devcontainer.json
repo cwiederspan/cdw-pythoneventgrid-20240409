@@ -15,7 +15,9 @@
 			"extensions": [
 				"ms-vscode.azurecli",
 				"Azurite.azurite",
-				"ms-azuretools.vscode-azurefunctions"
+				"ms-azuretools.vscode-azurefunctions",
+				"github.vscode-github-actions",
+				"ms-azuretools.vscode-bicep"
 			]
 		}
 	}

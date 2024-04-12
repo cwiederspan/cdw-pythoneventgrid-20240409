@@ -15,11 +15,6 @@ jobs:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
 
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
     - name: Setup NodeJs
       uses: actions/setup-node@v4
       with:
@@ -29,6 +24,11 @@ jobs:
       shell: bash
       run: |
         npm i -g azure-functions-core-tools@4 --unsafe-perm true
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy Resources
       uses: azure/cli@v2
