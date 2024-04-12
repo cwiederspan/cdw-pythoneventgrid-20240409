@@ -86,23 +86,29 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
     }
   }
 }
-
-// resource function 'Microsoft.Web/sites/functions@2022-09-01' = {
-//   name: functionName
-//   parent: functionApp
-//   properties: {
-//     config: {
-//       bindings: [
-//         {
-//           type: 'eventGridTrigger'
-//           direction: 'in'
-//           name: 'eventGridEvent'
-//         }
-//       ]
-//     }
-//   }
-// }
-
+/*
+resource function 'Microsoft.Web/sites/functions@2022-09-01' = {
+  name: functionName
+  parent: functionApp
+  properties: {
+    config: {
+      bindings: [
+        {
+          type: 'eventGridTrigger'
+          direction: 'in'
+          name: 'eventGridEvent'
+        }
+      ]
+    }
+    // script_href: 'function_app.py'
+    // test_data_href: 'https://cdw-functesting-20240411-app.azurewebsites.net/admin/vfs/home/data/Functions/sampledata/HttpTrigger.dat'
+    // href: 'https://cdw-functesting-20240411-app.azurewebsites.net/admin/functions/HttpTrigger'
+    // invoke_url_template: 'https://cdw-functesting-20240411-app.azurewebsites.net/api/test'
+    language: 'python'
+    isDisabled: false
+  }
+}
+*/
 resource topic 'Microsoft.EventGrid/systemTopics@2023-12-15-preview' = {
   name: '${baseName}-topic'
   location: 'global'
@@ -118,7 +124,8 @@ resource eventSub 'Microsoft.EventGrid/systemTopics/eventSubscriptions@2023-12-1
   properties: {
     destination: {
       properties: {
-        resourceId: '${resourceId('Microsoft.Web/sites', functionApp.name)}/functions/${functionName}'
+        resourceId: function.id
+        // resourceId: '${resourceId('Microsoft.Web/sites', functionApp.name)}/functions/${functionName}'
         maxEventsPerBatch: 1
         preferredBatchSizeInKilobytes: 64
       }
