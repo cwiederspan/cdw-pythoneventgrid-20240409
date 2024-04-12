@@ -4,8 +4,7 @@ on:
   [workflow_dispatch]
 
 env:
-  AZURE_RG_NAME: 'cdw-functesting-20240409'
-  AZURE_FUNCTIONAPP_NAME: 'cdw-functesting-20240409-app'   # set this to your function app name on Azure
+  AZURE_BASE_NAME: 'cdw-functesting-20240411'
 
 jobs:
   build-and-deploy:
@@ -35,10 +34,10 @@ jobs:
       with: 
         inlineScript: |
           cd ./infra
-          az deployment group create -g ${{ env.AZURE_RG_NAME }} --template-file main.bicep
+          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main.bicep
 
     - name: Deploy Function
       shell: bash
       run: |
         cd ./src
-        func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }} --python
+        func azure functionapp publish ${{ env.AZURE_BASE_NAME }}-app --python
