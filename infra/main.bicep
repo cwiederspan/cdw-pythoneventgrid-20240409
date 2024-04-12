@@ -86,7 +86,7 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
     }
   }
 }
-/*
+
 resource topic 'Microsoft.EventGrid/systemTopics@2023-12-15-preview' = {
   name: '${baseName}-topic'
   location: 'global'
@@ -132,4 +132,3 @@ resource eventSub 'Microsoft.EventGrid/systemTopics/eventSubscriptions@2023-12-1
     }
   }
 }
-*/
