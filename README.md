@@ -6,7 +6,7 @@ A simple repo for testing out infrastructure as code for a Python function app t
 cd ./infra
 az group create -n cdw-functesting-20240411 -l eastus
 
-az deployment group create -g cdw-functesting-20240411 --template-file main.bicep
+az deployment group create -g cdw-functesting-20240411 --template-file main-func.bicep
 
 cd ./src
 func azure functionapp publish cdw-functesting-20240411-app
@@ -14,8 +14,10 @@ func azure functionapp publish cdw-functesting-20240411-app
 
 ```
 
+## Setup and Prep Azure for GH Action Deployment
 
 ```bash
+
 SUBCRIPTION_ID=30c417b6-b3c1-4b62-94c9-0d3a80a182e9
 BASE_NAME=cdw-functesting-20240411
 

@@ -1,4 +1,4 @@
-name: Deploy Python Function
+name: Deploy Python Function with Func Tools
 
 on:
   [workflow_dispatch]
@@ -34,7 +34,7 @@ jobs:
       with: 
         inlineScript: |
           cd ./infra
-          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main.bicep --parameters baseName='${{ env.AZURE_BASE_NAME }}'
+          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main-func.bicep --parameters baseName='${{ env.AZURE_BASE_NAME }}'
 
     - name: Deploy Function
       shell: bash
