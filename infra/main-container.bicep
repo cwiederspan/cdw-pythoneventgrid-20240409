@@ -87,33 +87,21 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
   }
 }
 
-resource function 'Microsoft.Web/sites/functions@2022-09-01' = {
-  name: functionName
-  parent: functionApp
-  properties: {
-    config: {
-      bindings: [
-        {
-          type: 'eventGridTrigger'
-          direction: 'in'
-          name: 'eventGridEvent'
-        }
-      ]
-    }
-    // config_href: 'string'
-    // files: {}
-    // function_app_id: 'string'
-    // href: 'string'
-    // invoke_url_template: 'string'
-    // isDisabled: bool
-    // language: 'string'
-    // script_href: 'string'
-    // script_root_path_href: 'string'
-    // secrets_file_href: 'string'
-    // test_data: 'string'
-    // test_data_href: 'string'
-  }
-}
+// resource function 'Microsoft.Web/sites/functions@2022-09-01' = {
+//   name: functionName
+//   parent: functionApp
+//   properties: {
+//     config: {
+//       bindings: [
+//         {
+//           type: 'eventGridTrigger'
+//           direction: 'in'
+//           name: 'eventGridEvent'
+//         }
+//       ]
+//     }
+//   }
+// }
 
 resource topic 'Microsoft.EventGrid/systemTopics@2023-12-15-preview' = {
   name: '${baseName}-topic'
