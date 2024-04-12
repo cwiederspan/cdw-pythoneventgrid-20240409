@@ -1,7 +1,10 @@
 name: Deploy Python Function with Container
 
 on:
-  [workflow_dispatch]
+  workflow_dispatch:
+  push:
+    branches:
+    - 'container'
 
 env:
   AZURE_BASE_NAME: 'cdw-functesting-20240411'
