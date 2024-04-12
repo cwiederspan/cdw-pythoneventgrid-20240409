@@ -11,7 +11,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   }
   kind: 'StorageV2'
 }
-/*
+
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
   name: '${baseName}-law'
   location: location
@@ -86,7 +86,7 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
     }
   }
 }
-
+/*
 resource topic 'Microsoft.EventGrid/systemTopics@2023-12-15-preview' = {
   name: '${baseName}-topic'
   location: 'global'
