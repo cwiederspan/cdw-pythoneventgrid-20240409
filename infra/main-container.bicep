@@ -1,7 +1,6 @@
 param baseName string = 'cdw-functesting-20240411'
 param location string = 'eastus'
 param functionName string = 'NewSubscription'
-
 param imageName string = 'cwiederspan/cdwfunctesting:latest'
 
 // Storage Account for Function App

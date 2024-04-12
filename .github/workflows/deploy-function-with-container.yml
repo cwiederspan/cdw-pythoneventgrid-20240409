@@ -8,6 +8,7 @@ on:
 
 env:
   AZURE_BASE_NAME: 'cdw-functesting-20240411'
+  CONTAINER_NAME: 'cwiederspan/cdwfunctesting:latest'
 
 jobs:
   build-and-deploy:
@@ -31,7 +32,7 @@ jobs:
       with:
         push: true
         context: ./src
-        tags: cwiederspan/cdwfunctesting:latest
+        tags: ${{ env.CONTAINER_NAME }}
 
     - name: Azure Login
       uses: azure/login@v1
@@ -43,4 +44,4 @@ jobs:
       with: 
         inlineScript: |
           cd ./infra
-          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main-container.bicep --parameters baseName='${{ env.AZURE_BASE_NAME }}'
+          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main-container.bicep --parameters baseName='${{ env.AZURE_BASE_NAME }}' imageName='${{ env.CONTAINER_NAME }}' 
