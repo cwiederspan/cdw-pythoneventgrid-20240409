@@ -34,7 +34,7 @@ jobs:
       with: 
         inlineScript: |
           cd ./infra
-          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main.bicep
+          az deployment group create -g ${{ env.AZURE_BASE_NAME }} --template-file main.bicep --parameters baseName='${{ env.AZURE_BASE_NAME }}'
 
     - name: Deploy Function
       shell: bash

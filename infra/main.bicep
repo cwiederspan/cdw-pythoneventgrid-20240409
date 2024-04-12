@@ -1,4 +1,4 @@
-param baseName string = 'cdw-functesting-20240409'
+param baseName string = 'cdw-functesting-20240411'
 param location string = 'eastus'
 param functionName string = 'NewSubscription'
 
