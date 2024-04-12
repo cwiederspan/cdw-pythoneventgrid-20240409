@@ -124,8 +124,7 @@ resource eventSub 'Microsoft.EventGrid/systemTopics/eventSubscriptions@2023-12-1
   properties: {
     destination: {
       properties: {
-        resourceId: function.id
-        // resourceId: '${resourceId('Microsoft.Web/sites', functionApp.name)}/functions/${functionName}'
+        resourceId: '${resourceId('Microsoft.Web/sites', functionApp.name)}/functions/${functionName}'
         maxEventsPerBatch: 1
         preferredBatchSizeInKilobytes: 64
       }
