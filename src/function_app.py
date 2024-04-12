@@ -16,3 +16,13 @@ def eventGridTest(event: func.EventGridEvent):
     })
 
     logging.info('Python EventGrid trigger processed an event: %s', result)
+
+
+@app.function_name(name="HttpTrigger")
+@app.route(route="test", auth_level=func.AuthLevel.ANONYMOUS)
+def test_function(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+    return func.HttpResponse(
+        "Azure Function says, 'Hello, World!' from Python.",
+        status_code=200
+        )
